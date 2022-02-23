@@ -23,14 +23,15 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-assert 'SECRET_KEY' in os.environ, 'Set SECRET_KEY in your .env file!'
-SECRET_KEY = os.environ['SECRET_KEY']
+# assert 'SECRET_KEY' in os.environ, 'Set SECRET_KEY in your .env file!'
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'Y9oDBbQDwqSHosqDBr8yspeHU4hnR_iUrItcHpJBfOWlkiC-6BDNqalAfWihScrnBH4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('OPEN5E_DEBUG', '') != 'False'
 
 ## Always allow connections from localhost, and the SERVER_NAME if it's there in the .env file.
-ALLOWED_HOSTS = ['localhost', os.environ.get('SERVER_NAME', ''), '0.0.0.0', 'api.open5e.com', 'api-beta.open5e.com']
+ALLOWED_HOSTS = ['dndevice.herokuapp.com', '.herokuapp.com', 'localhost', os.environ.get('SERVER_NAME', ''), '0.0.0.0', 'api.open5e.com', 'api-beta.open5e.com']
 
 
 # Application definition
@@ -166,6 +167,7 @@ STATIC_URL = '/static/'
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = (
+    'dndevice.herokuapp.com'
     'https://0.0.0.0',
     'https://0.0.0.0:8888',
     'https://localhost:3333',

@@ -1,11 +1,7 @@
+setup:
+  addons:
+    - plan: heroku-postgresql
+    
 build: 
-  languages: 
-    - python
-  config: 
-    PYTHONHOME: Null
-
-release:
-  command:
-    - sh scripts/build.sh
-run: 
-  web: pipenv install -r requirements.txt && pipenv run gunicorn server.wsgi
+  docker:
+    web: Dockerfile

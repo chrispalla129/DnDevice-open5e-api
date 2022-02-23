@@ -36,4 +36,5 @@ RUN pipenv run python manage.py update_index --remove
 RUN pipenv run sh ./scripts/generate_self_signed_cert.sh
 
 #run gunicorn.
-CMD ["pipenv", "run", "gunicorn","--certfile=${CERTFILE}", "--keyfile=${KEYFILE}","-b", ":8888", "server.wsgi:application"]
+#CMD ["pipenv", "run", "gunicorn","--certfile=${CERTFILE}", "--keyfile=${KEYFILE}","-b", ":${PORT}", "server.wsgi:application"]
+CMD gunicorn --certfile=$CERTFILE --keyfile=$KEYFILE server.wsgi --bind 0.0.0.0:$PORT
