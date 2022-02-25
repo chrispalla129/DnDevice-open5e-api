@@ -3,7 +3,7 @@ from haystack.utils import Highlighter
 import markdown2 as mkdn
 
 class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 50
+    page_size = 250
     page_size_query_param = 'limit'
 
 class NewHighlighter(Highlighter):
