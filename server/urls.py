@@ -20,7 +20,7 @@ from api import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
+router.register(r'users', [views.UserViewSet, views.test_post])
 router.register(r'groups', views.GroupViewSet)
 router.register(r'spells', views.SpellViewSet)
 router.register(r'monsters', views.MonsterViewSet)

@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets, filters
+from rest_framework import viewsets, filters, status
 import django_filters
 from api.models import *
 from api.serializers import *
@@ -9,6 +9,10 @@ from drf_haystack.viewsets import HaystackViewSet
 from api.models import Monster
 from api.search_indexes import MonsterIndex
 
+
+from rest_framework.decorators import api_view
+from django.http.response import JsonResponse
+from rest_framework.parsers import JSONParser 
 
 class SearchView(HaystackViewSet):
 
@@ -231,3 +235,12 @@ class WeaponViewSet(viewsets.ReadOnlyModelViewSet):
         'document__slug',
     )
     search_fields = ['name']
+
+@api_view('POST')
+def test_post(request):
+    tutorial_data = JSONParser().parse(request)
+    tutorial_serializer = UserSerializer(data=tutorial_data)
+    if tutorial_serializer.is_valid():
+        tutorial_serializer.save()
+        return JsonResponse(tutorial_serializer.data, status=status.HTTP_201_CREATED) 
+    return JsonResponse(tutorial_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
