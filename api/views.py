@@ -236,7 +236,7 @@ class WeaponViewSet(viewsets.ReadOnlyModelViewSet):
     )
     search_fields = ['name']
 
-@api_view('POST')
+@api_view(['POST'])
 def test_post(request):
     tutorial_data = JSONParser().parse(request)
     tutorial_serializer = UserSerializer(data=tutorial_data)
