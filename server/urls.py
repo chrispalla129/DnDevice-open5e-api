@@ -20,8 +20,8 @@ from api import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 router = routers.DefaultRouter()
-#router.register(r'users', views.UserViewSet)
-#router.register(r'groups', views.GroupViewSet)
+router.register(r'users', views.UserViewSet)
+router.register(r'groups', views.GroupViewSet)
 router.register(r'spells', views.SpellViewSet)
 router.register(r'monsters', views.MonsterViewSet)
 router.register(r'documents', views.DocumentViewSet)
@@ -31,9 +31,9 @@ router.register(r'sections', views.SectionViewSet)
 router.register(r'feats', views.FeatViewSet)
 router.register(r'conditions', views.ConditionViewSet)
 router.register(r'races',views.RaceViewSet)
-#router.register(r'subraces',views.SubraceViewSet)
+router.register(r'subraces',views.SubraceViewSet)
 router.register(r'classes',views.CharClassViewSet)
-#router.register(r'archetypes',views.ArchetypeViewSet)
+router.register(r'archetypes',views.ArchetypeViewSet)
 router.register(r'magicitems',views.MagicItemViewSet)
 router.register(r'weapons',views.WeaponViewSet)
 
