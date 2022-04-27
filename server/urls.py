@@ -20,7 +20,7 @@ from api import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 router = routers.DefaultRouter()
-router.register(r'users', views.test_post, basename="User")
+#router.register(r'users', views.test_post, basename="User")
 router.register(r'groups', views.GroupViewSet)
 router.register(r'spells', views.SpellViewSet)
 router.register(r'monsters', views.MonsterViewSet)
@@ -43,6 +43,7 @@ router.register('search', views.SearchView, base_name="global-search")
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^users/', views.test_post, name='User'),
     #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^search/', include('haystack.urls')),
 ]
